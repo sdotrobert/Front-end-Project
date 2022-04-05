@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="imgs/ape.jpeg">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&display=swap">
+    <!-- font awesome link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- step wizard -->
+    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
+        type="text/css" />
+    <!-- jquery CDN(content delivery network) must before my own css as I'm depend on it -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- my css -->
+    <link rel="stylesheet" href="css/personal.css">
+
+
+    <title>NFT Platform</title>
+    <!-- <script> //這裡可以用那個部落格的方法做新增 </script> -->
+
+</head>
+
+<body>
+    <!-- start full screen container -->
+    <div class="container-fluid p-0">
+
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-lg navbar-custom sticky-top shadow p-2">
+            <div class="btn-div">
+                <button type="button" class="btn" id="close-btn">
+                    <img
+                        src="https://img.icons8.com/external-flat-icons-inmotus-design/30/000000/external-bar-messenger-flat-icons-inmotus-design.png" />
+                    <!-- <i class="fa-solid fa-bars"></i> -->
+                </button>
+                <button type="button" class="btn" id="open-btn" style="display: none;">
+                    <img
+                        src="https://img.icons8.com/external-flat-icons-inmotus-design/30/000000/external-bar-messenger-flat-icons-inmotus-design.png" />
+                    <!-- <i class="fa-solid fa-bars"></i> -->
+                </button>
+            </div>
+
+            <a class="navbar-brand" id="brand" href="index.html">Minterlake</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">主頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="signIn.html">登入</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="signUp.html">註冊</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="personal.html">個人專區 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="company.html">公司專區 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-expanded="false">
+                            所有活動
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="exhibition.html"><i class="fa-solid fa-paintbrush"
+                                    style="margin-right: 10px;font-size:25px;"></i>展覽
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="show.html"><i class="fa-solid fa-masks-theater"
+                                    style="margin-right: 10px;font-size:25px;"></i>表演活動
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+        <!-- end navbar -->
+
+        <!-- --------------------------------------------------------------------------------------------------------------------- -->
+
+        <!-- sidebar + content -->
+        <div class="wrapper p-0">
+
+            <!-- sidebar -->
+            <nav class="sidebar" id="sidebar">
+
+                <div class="sidebar-header-div">
+                    <div class="profile-img">
+                        <!-- a method of setting div's bg img to change profile img -->
+                        <div class="display-img" id="display-img"></div>
+                        <div style="display: flex;justify-content: space-around;align-items: center;">
+                            <input type="file" id="input-file" style="display:none;" accept="image/*">
+                            <label id="label-for-input" for="input-file">Edit</label>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 id="sidebar-header" style="text-align:center;">Sidebar</h3>
+                    </div>
+                </div>
+
+                <ul class="nav nav-tabs sidebar-lis">
+
+                    <li class="nav-link sidebar-item d-flex justify-content-around" id="tab-info">
+                        <i class="fa-solid fa-user i-item"></i>
+                        <a class="sidebar-item-a" data-toggle="tab" role="tab" aria-controls="pane-info"
+                            href="#pane-info">個人資訊</a>
+                    </li>
+
+                    <li class="nav-item nav-link sidebar-item d-flex justify-content-around" id="tab-asset">
+                        <i class="fa-solid fa-wallet i-item"></i>
+                        <a class="sidebar-item-a" data-toggle="tab" role="tab" aria-controls="pane-asset"
+                            href="#pane-asset">個人資產</a>
+                    </li>
+
+                    <li class="nav-item nav-link sidebar-item d-flex justify-content-around" id="tab-asset">
+                        <i class="fa-brands fa-bitcoin i-item"></i>
+                        <a class="sidebar-item-a" data-toggle="tab" role="tab" aria-controls="pane-transfer"
+                            href="#pane-transfer">申請轉讓</a>
+                    </li>
+
+                    <li class="nav-item nav-link sidebar-item d-flex justify-content-around" id="tab-help">
+                        <i class="fa-solid fa-circle-question i-item"></i>
+                        <a class="sidebar-item-a" data-toggle="tab" role="tab" aria-controls="pane-help"
+                            href="#pane-help">詢問中心</a>
+                    </li>
+
+                </ul>
+
+                <div class="text-center switcher">
+                    <button type="button" class="btn btn-default" id="night-switch" data-toggle="tooltip"
+                        data-placement="right" title="Night mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button type="button" class="btn btn-default" id="light-switch" data-toggle="tooltip"
+                        data-placement="right" title="Light mode">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </button>
+                </div>
+
+            </nav>
+            <!-- end sidebar -->
+
+            <!-- contnet -->
+            <div class="content-container container p-0" id="content">
+
+                <div class="row" id="content-row">
+
+                    <!-- tab content -->
+                    <div class="tab-content">
+
+                        <!-- info content RWD checked -->
+                        <div class="container tab-pane show active col-12 p-0" role="tabpanel" id="pane-info"
+                            aria-labelledby="tab-info">
+
+                            <div class="row p-0" id="user-info-intro">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                                    <div>
+                                        <h1 class="content-title mt-4" id="info-title">
+                                            <span id="info-title-cn">個人資訊</span><br>
+                                            <span id="info-title-en">Personal Informations</span>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-7 col-lg-7 col-xl-7 p-0" id="user-info-img-div">
+                                    <img id="user-info-img" src="imgs/user-info850.jpg">
+                                </div>
+                            </div>
+
+                            <!-- info card -->
+                            <div class="row" id="info-card">
+                                <div class="col-12 col-sm-12">
+                                    <div class="card w-100 shadow rounded p-3 mt-5 mb-5">
+                                        <div class="card-body">
+                                            <div style="padding:0;border-bottom: 2px solid darkgrey;">
+                                                <h4 class="card-title" style="font-weight:600;">My Information 我的個人資料
+                                                </h4>
+                                                <p class="card-text" style="margin-bottom:10px;">
+                                                    Check your informations here.
+                                                </p>
+                                            </div>
+
+                                            <div class="row">
+
+                                                <div class="col-12 col-lg-6 detail p-0" id="email-part">
+                                                    <label class="info-compo" id="info-email">Email:
+                                                        <span>stopwar@gmail.com</span>
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-12 col-lg-6 detail p-0" id="username-part">
+                                                    <label class="info-compo" id="info-userName">User Name:
+                                                        <span>Naruto3347</span>
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-12 mt-1 detail p-0" id="walletid-part">
+
+                                                    <div class="row p-0" style="margin-left:0px;">
+
+                                                        <div class="col-12 col-lg-2 p-0">
+                                                            <label class="info-compo" id="label-walletid">Wallet
+                                                                Id:</label>
+                                                        </div>
+                                                        <div class="col-12 col-lg-10 p-0" id="bangbang">
+                                                            <input type="text" id="input-walletid">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                id="save-wid-btn">Save</button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- notices -->
+                            <div class="row p-5" id="notices">
+                                <div class="col-12 p-0">
+                                    <p>
+                                        Users can review on their personal data such as email, password. If current data
+                                        are not currect, please feel free to contact us by sending email to
+                                        <a href="https://gmail.com/"
+                                            style="font-weight: 500;font-size:22px;">minterlake@gmail.com
+                                        </a>.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- security img and notations -->
+                            <div class="row mt-5" id="info-instruction">
+
+                                <div class="col-12 col-sm-12 col-md-10 col-lg-6 col-xl-5 p-0" id="security-img-div">
+                                    <img id="security-img" src="imgs/Data-security.jpg">
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-10 col-lg-6 col-xl-6 p-3" id="notation">
+
+                                    <h2 style="font-weight: 600;">Notations !</h2>
+                                    <!-- modal -->
+                                    <div class="mb-3">
+                                        <p class="label" for="term-of-service" style="cursor:auto;">Data showing here
+                                            were already stored in database. We sure will be use these data
+                                            for ligilimate purposes as mentioned in our
+                                            <a href="#" data-toggle="modal" data-target="#exampleModalCenter"
+                                                style="font-weight:bolder;"> terms of Service</a>.
+                                            Users can feel free to discover the joy of life of your own through our
+                                            website. And most
+                                            importantly, our team will try our best to prevent hackers and other users
+                                            from stealing and
+                                            reaching your personal data.
+
+                                            <!-- Modal content -->
+                                        <div class="modal fade bd-example-modal-md" id="exampleModalCenter"
+                                            tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                            aria-hidden="true" data-backdrop="solve">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-centered modal-dialog-scrollable"
+                                                role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">Terms and
+                                                            Conditions for Data Usage</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body" style="line-height:1.7em;cursor: auto;">
+
+                                                        <h3>Terms and Conditions for Sign Up</h3>
+                                                        <h5>Terms and Conditions</h5>
+                                                        Last updated: February 18, 2022<br><br>
+
+                                                        Please read these terms and conditions carefully before using
+                                                        Our
+                                                        Service.<br><br>
+
+                                                        <h3 style="margin-bottom: 5%;">Interpretation and Definitions
+                                                        </h3>
+                                                        <h5>Interpretation</h5>
+                                                        <p>The words of which the initial letter is capitalized have
+                                                            meanings defined under the
+                                                            following
+                                                            conditions. The following definitions shall have the same
+                                                            meaning regardless of whether
+                                                            they
+                                                            appear in singular or in plural.
+                                                        </p>
+
+                                                        <h3>Definitions</h3>
+                                                        For the purposes of these Terms and Conditions:<br>
+
+                                                        <p>
+                                                            Affiliate means an entity that controls, is controlled by or
+                                                            is
+                                                            under common control with
+                                                            a
+                                                            party, where "control" means ownership of 50% or more of the
+                                                            shares, equity interest or
+                                                            other
+                                                            securities entitled to vote for election of directors or
+                                                            other
+                                                            managing authority.<br><br>
+
+                                                            Country refers to: Taiwan<br><br>
+
+                                                            Company (referred to as either "the Company", "We", "Us" or
+                                                            "Our" in this Agreement)
+                                                            refers to
+                                                            Sign Up.<br><br>
+
+                                                            Device means any device that can access the Service such as
+                                                            a
+                                                            computer, a cellphone or a
+                                                            digital
+                                                            tablet.<br><br>
+
+                                                            Service refers to the Website.<br><br>
+
+                                                            Terms and Conditions (also referred as "Terms") mean these
+                                                            Terms
+                                                            and Conditions that form
+                                                            the
+                                                            entire agreement between You and the Company regarding the
+                                                            use
+                                                            of the Service. This Terms
+                                                            and
+                                                            Conditions agreement has been created with the help of the
+                                                            Terms
+                                                            and Conditions
+                                                            Generator.<br><br>
+
+                                                            Third-party Social Media Service means any services or
+                                                            content
+                                                            (including data,
+                                                            information,
+                                                            products or services) provided by a third-party that may be
+                                                            displayed, included or made
+                                                            available by the Service.<br><br>
+
+                                                            Website refers to Sign Up, accessible from <a
+                                                                href="signUp.html">http://127.0.0.1:5500/signUp.html</a><br><br>
+
+                                                            You means the individual accessing or using the Service, or
+                                                            the
+                                                            enterprice, or other legal
+                                                            entity
+                                                            on behalf of which such individual is accessing or using the
+                                                            Service, as
+                                                            applicable.<br><br>
+                                                        </p>
+
+                                                        <h3>Acknowledgment</h3>
+                                                        <p>
+                                                            These are the Terms and Conditions governing the use of this
+                                                            Service and the agreement
+                                                            that
+                                                            operates between You and the Company. These Terms and
+                                                            Conditions
+                                                            set out the rights and
+                                                            obligations of all users regarding the use of the
+                                                            Service.<br><br>
+
+                                                            Your access to and use of the Service is conditioned on Your
+                                                            acceptance of and compliance
+                                                            with
+                                                            these Terms and Conditions. These Terms and Conditions apply
+                                                            to
+                                                            all visitors, users and
+                                                            others
+                                                            who access or use the Service.<br><br>
+
+                                                            By accessing or using the Service You agree to be bound by
+                                                            these
+                                                            Terms and Conditions. If
+                                                            You
+                                                            disagree with any part of these Terms and Conditions then
+                                                            You
+                                                            may not access the
+                                                            Service.<br><br>
+
+                                                            You represent that you are over the age of 18. The Company
+                                                            does
+                                                            not permit those under 18
+                                                            to
+                                                            use
+                                                            the Service.<br><br>
+
+                                                            Your access to and use of the Service is also conditioned on
+                                                            Your acceptance of and
+                                                            compliance
+                                                            with the Privacy Policy of the Company. Our Privacy Policy
+                                                            describes Our policies and
+                                                            procedures
+                                                            on the collection, use and disclosure of Your personal
+                                                            information when You use the
+                                                            Application
+                                                            or the Website and tells You about Your privacy rights and
+                                                            how
+                                                            the law protects You.
+                                                            Please
+                                                            read
+                                                            Our Privacy Policy carefully before using Our
+                                                            Service.<br><br>
+                                                        </p>
+
+                                                        <h3>Links to Other Websites</h3>
+                                                        <p>
+                                                            Our Service may contain links to third-party web sites or
+                                                            services that are not owned or
+                                                            controlled by the Company.<br><br>
+
+                                                            The Company has no control over, and assumes no
+                                                            responsibility
+                                                            for, the content, privacy
+                                                            policies, or practices of any third party web sites or
+                                                            services.
+                                                            You further acknowledge
+                                                            and
+                                                            agree that the Company shall not be responsible or liable,
+                                                            directly or indirectly, for any
+                                                            damage or loss caused or alleged to be caused by or in
+                                                            connection with the use of or
+                                                            reliance
+                                                            on
+                                                            any such content, goods or services available on or through
+                                                            any
+                                                            such web sites or
+                                                            services.<br><br>
+
+                                                            We strongly advise You to read the terms and conditions and
+                                                            privacy policies of any
+                                                            third-party
+                                                            web sites or services that You visit.<br><br>
+                                                        </p>
+
+                                                        <h3>Termination</h3>
+                                                        <p>
+                                                            We may terminate or suspend Your access immediately, without
+                                                            prior notice or liability,
+                                                            for
+                                                            any reason whatsoever, including without limitation if You
+                                                            breach these Terms and
+                                                            Conditions.<br><br>
+
+                                                            Upon termination, Your right to use the Service will cease
+                                                            immediately.<br><br>
+                                                        </p>
+
+                                                        <h3>Limitation of Liability</h3>
+                                                        <p>
+                                                            Notwithstanding any damages that You might incur, the entire
+                                                            liability of the Company and
+                                                            any
+                                                            of its suppliers under any provision of this Terms and Your
+                                                            exclusive remedy for all of
+                                                            the
+                                                            foregoing shall be limited to the amount actually paid by
+                                                            You
+                                                            through the Service or 100
+                                                            USD
+                                                            if You haven't purchased anything through the
+                                                            Service.<br><br>
+
+                                                            To the maximum extent permitted by applicable law, in no
+                                                            event
+                                                            shall the Company or its
+                                                            suppliers be liable for any special, incidental, indirect,
+                                                            or
+                                                            consequential damages
+                                                            whatsoever
+                                                            (including, but not limited to, damages for loss of profits,
+                                                            loss of data or other
+                                                            information, for business interruption, for personal injury,
+                                                            loss of privacy arising out
+                                                            of or in any way
+                                                            related to the use of or inability to use the Service,
+                                                            third-party software and/or
+                                                            third-party
+                                                            hardware used with the Service, or otherwise in connection
+                                                            with
+                                                            any provision of this
+                                                            Terms),
+                                                            even if the Company or any supplier has been advised of the
+                                                            possibility of such damages
+                                                            and
+                                                            even if the remedy fails of its essential purpose.<br><br>
+
+                                                            Some states do not allow the exclusion of implied warranties
+                                                            or
+                                                            limitation of liability
+                                                            for
+                                                            incidental or consequential damages, which means that some
+                                                            of
+                                                            the above limitations may
+                                                            not
+                                                            apply. In these states, each party's liability will be
+                                                            limited
+                                                            to the greatest extent
+                                                            permitted by law.<br><br>
+                                                        </p>
+
+                                                        <h3>"AS IS" and "AS AVAILABLE" Disclaimer</h3>
+                                                        <p>
+                                                            The Service is provided to You "AS IS" and "AS AVAILABLE"
+                                                            and
+                                                            with all faults and defects
+                                                            without warranty of any kind. To the maximum extent
+                                                            permitted
+                                                            under applicable law, the
+                                                            Company, on its own behalf and on behalf of its Affiliates
+                                                            and
+                                                            its and their respective
+                                                            licensors and
+                                                            service providers, expressly disclaims all warranties,
+                                                            whether
+                                                            express, implied, statutory
+                                                            or
+                                                            otherwise, with respect to the Service, including all
+                                                            implied
+                                                            warranties of
+                                                            merchantability,
+                                                            fitness for a particular purpose, title and
+                                                            non-infringement,
+                                                            and warranties that may
+                                                            arise
+                                                            out of course of dealing, course of performance, usage or
+                                                            trade
+                                                            practice. Without
+                                                            limitation to
+                                                            the foregoing, the Company provides no warranty or
+                                                            undertaking,
+                                                            and makes no
+                                                            representation of any
+                                                            kind that the Service will meet Your requirements, achieve
+                                                            any
+                                                            intended results, be
+                                                            compatible
+                                                            or work with any other software, applications, systems or
+                                                            services, operate without
+                                                            interruption, meet any performance or reliability standards
+                                                            or
+                                                            be error free or that any
+                                                            errors or defects can or will be corrected.<br><br>
+
+                                                            Without limiting the foregoing, neither the Company nor any
+                                                            of
+                                                            the enterprice's provider
+                                                            makes
+                                                            any representation or warranty of any kind, express or
+                                                            implied:
+                                                            (i) as to the operation or
+                                                            availability of the Service, or the information, content,
+                                                            and
+                                                            materials or products
+                                                            included
+                                                            thereon; (ii) that the Service will be uninterrupted or
+                                                            error-free; (iii) as to the
+                                                            accuracy,
+                                                            reliability, or currency of any information or content
+                                                            provided
+                                                            through the Service; or
+                                                            (iv)
+                                                            that the Service, its servers, the content, or e-mails sent
+                                                            from
+                                                            or on behalf of the
+                                                            Company
+                                                            are free of viruses, scripts, trojan horses, worms, malware,
+                                                            timebombs or other harmful
+                                                            components.<br><br>
+
+                                                            Some jurisdictions do not allow the exclusion of certain
+                                                            types
+                                                            of warranties or
+                                                            limitations on
+                                                            applicable statutory rights of a consumer, so some or all of
+                                                            the
+                                                            above exclusions and
+                                                            limitations may not apply to You. But in such a case the
+                                                            exclusions and limitations set
+                                                            forth
+                                                            in this section shall be applied to the greatest extent
+                                                            enforceable under applicable
+                                                            law.<br><br>
+                                                        </p>
+
+                                                        <h3>Governing Law</h3>
+                                                        <p>
+                                                            The laws of the Country, excluding its conflicts of law
+                                                            rules,
+                                                            shall govern this Terms and
+                                                            Your use of the Service. Your use of the Application may
+                                                            also be
+                                                            subject to other local,
+                                                            state,
+                                                            national, or international laws.<br><br>
+                                                        </p>
+
+                                                        <h3>Disputes Resolution</h3>
+                                                        <p>
+                                                            If You have any concern or dispute about the Service, You
+                                                            agree
+                                                            to first try to resolve
+                                                            the
+                                                            dispute informally by contacting the Company.<br><br>
+                                                        </p>
+
+                                                        <h3>For European Union (EU) Users</h3>
+                                                        <p>
+                                                            If You are a European Union consumer, you will benefit from
+                                                            any
+                                                            mandatory provisions of
+                                                            the
+                                                            law of the country in which you are resident in.<br><br>
+                                                        </p>
+
+                                                        <h3>United States Legal Compliance</h3>
+                                                        <p>
+                                                            You represent and warrant that (i) You are not located in a
+                                                            country that is subject to the
+                                                            United States government embargo, or that has been
+                                                            designated by
+                                                            the United States
+                                                            government
+                                                            as a "terrorist supporting" country, and (ii) You are not
+                                                            listed
+                                                            on any United States
+                                                            government
+                                                            list of prohibited or restricted parties.<br><br>
+                                                        </p>
+
+                                                        <h3>Severability and Waiver</h3>
+                                                        <h5>Severability</h5>
+                                                        <p>
+                                                            If any provision of these Terms is held to be unenforceable
+                                                            or
+                                                            invalid, such provision
+                                                            will be
+                                                            changed and interpreted to accomplish the objectives of such
+                                                            provision to the greatest
+                                                            extent
+                                                            possible under applicable law and the remaining provisions
+                                                            will
+                                                            continue in full force and
+                                                            effect.<br><br>
+                                                        </p>
+
+                                                        <h3>Waiver</h3>
+                                                        <p>
+                                                            Except as provided herein, the failure to exercise a right
+                                                            or to
+                                                            require performance of an
+                                                            obligation under these Terms shall not effect a party's
+                                                            ability
+                                                            to exercise such right or
+                                                            require such performance at any time thereafter nor shall
+                                                            the
+                                                            waiver of a breach
+                                                            constitute a
+                                                            waiver of any subsequent breach.<br><br>
+                                                        </p>
+
+                                                        <h3>Translation Interpretation</h3>
+                                                        <p>
+                                                            These Terms and Conditions may have been translated if We
+                                                            have
+                                                            made them available to You
+                                                            on
+                                                            our Service. You agree that the original English text shall
+                                                            prevail in the case of a
+                                                            dispute.<br><br>
+                                                        </p>
+
+                                                        <h3>Changes to These Terms and Conditions</h3>
+                                                        <p>
+                                                            We reserve the right, at Our sole discretion, to modify or
+                                                            replace these Terms at any
+                                                            time. If
+                                                            a revision is material We will make reasonable efforts to
+                                                            provide at least 30 days' notice
+                                                            prior
+                                                            to any new terms taking effect. What constitutes a material
+                                                            change will be determined at
+                                                            Our
+                                                            sole discretion.<br><br>
+
+                                                            By continuing to access or use Our Service after those
+                                                            revisions
+                                                            become effective, You
+                                                            agree
+                                                            to be bound by the revised terms. If You do not agree to the
+                                                            new
+                                                            terms, in whole or in
+                                                            part,
+                                                            please stop using the website and the Service.<br><br>
+                                                        </p>
+
+                                                        <h3>Contact Us</h3>
+                                                        <p>
+                                                            If you have any questions about these Terms and Conditions,
+                                                            You
+                                                            can contact us:<br><br>
+
+                                                            By email: onestoptk@gmail.com
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end modal content -->
+
+
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- asset content RWD checked -->
+                        <div class="container tab-pane fade col-12 p-0" role="tabpanel" id="pane-asset"
+                            aria-labelledby="tab-asset">
+
+                            <div class="row mb-5 p-0" id="user-asset-intro" style="margin-left:0px;">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                                    <div>
+                                        <h1 class="content-title mt-4" id="asset-title">
+                                            <span id="title-cn">個人資產</span>
+                                            <br>
+                                            <span id="title-en">Personal Assets</span>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-7 col-lg-7 col-xl-7 p-0" id="user-asset-img-div">
+                                    <img id="user-asset-img" src="imgs/user-asset850.jpg">
+                                </div>
+                            </div>
+
+                            <!-- Asset Display cards -->
+                            <div class="row mb-5 p-3" id="three-cards" style="margin-left:0px;">
+
+                                <!-- Asset Profit -->
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-5 col-xl-3 displays" id="asset-profit">
+                                    <div class="card shadow">
+                                        <div class="card-body p-2" id="asset-profit-card">
+                                            <div class="mt-2" id="profit-title">
+                                                <h5 class="card-title">Asset Profit</h5>
+                                                <button type="button" class="btn btn-default p-0" id="invisible-switch"
+                                                    data-toggle="tooltip" data-placement="right" title="hide">
+                                                    <i class="fa-solid fa-eye-slash"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-default p-0" id="visible-switch"
+                                                    data-toggle="tooltip" data-placement="right" title="show">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </button>
+                                            </div>
+                                            <div class="b-div">
+                                                <div id="profit-num">
+                                                    <b class="b-num">12</b>
+                                                </div>
+                                                <div id="unit" style="font-size:23px;">
+                                                    <div class="">
+                                                        <b class="b-unit" style="font-size:25px;">ETH</b>
+                                                    </div>
+                                                    <div style="color:#dc3545;">
+                                                        <b class="b-unit" style="font-size:25px;">0.2%</b>
+                                                        <i class="fas fa-arrow-circle-down"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Total of Holdings -->
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-5 col-xl-3 displays" id="total-holdings">
+                                    <div class="card shadow">
+                                        <div class="card-body p-3">
+                                            <h5 class="card-title" id="total-holdings">Total of Holdings</h5>
+                                            <div class="b-div">
+                                                <div id="holdings-num">
+                                                    <b class="b-num">7</b>
+                                                </div>
+                                                <div class="unit">
+                                                    <div>
+                                                        <b class="b-unit">ITEMS</b>
+                                                    </div>
+                                                    <div
+                                                        style="color:#7fdf48;display:flex;justify-content: space-between;align-items:center;font-size:20px;">
+                                                        <b class="b-percent">3%</b>
+                                                        <i class="fas fa-arrow-circle-up"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sum -->
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5 ml-0 mt-0 displays" id="sum">
+                                    <div class="card shadow">
+                                        <div class="card-body p-3 convert-card">
+                                            <div id="convert-card"
+                                                style="display: block;justify-content: center;align-items: center;">
+                                                <h5 class="convert-title">Convert into NTD</h5>
+                                                <div class="b-div">
+                                                    <div id="convert-num">
+                                                        <b class="convert-num">672,349</b>
+                                                    </div>
+                                                    <div class="unit">
+                                                        <div>
+                                                            <b id="convert-unit">NTD</b>
+                                                        </div>
+                                                        <div
+                                                            style="color:#7fdf48;display:flex;justify-content: space-between;align-items:center;font-size:25px;">
+                                                            <b class="convert-percent">0.113%</b>
+                                                            <i class="fas fa-arrow-circle-up"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- chart -->
+                            <div class="row p-3" id="chart-row" style="margin-left:0px;">
+
+                                <div class="card shadow rounded mb-5 col-12 col-sm-12 col-lg-7">
+                                    <div class="card-body">
+                                        <div style="padding:0;border-bottom: 2px solid darkgrey;">
+                                            <h4 class="card-title">Asset in Chart</h4>
+                                            <p class="card-text" style="margin-bottom:10px;">
+                                                Here's all assets that you currently have.
+                                            </p>
+                                        </div>
+
+                                        <div class="row mt-2 p-0">
+                                            <div class="col-12">
+                                                <h3>Holdings</h3>
+                                                <div class="canvas-container mt-0 p-0">
+                                                    <canvas id="assetChart" aria-label="Asset Chart" role="canvas">
+                                                    </canvas>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- rhs card -->
+                                <div class="card shadow rounded mb-5 col-12 col-sm-8 col-lg-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Special title treatment</h5>
+                                        <p class="card-text">With supporting text below as a natural
+                                            lead-in to additional content.
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                                <p class="p-2">
+                                    The chart above automatically gathers user's assets data and shows in different
+                                    types.
+                                    You can simply click on the button on top right corner to change chart types.
+                                </p>
+                            </div>
+
+                            <!-- asset table -->
+                            <div class="col-12 p-3 mb-5" id="asset-table-div">
+                                <h3>List Assets</h3>
+                                <div class="table-container p-3">
+                                    <table class="table table-hover table-lg">
+                                        <thead class="thead-dark text-center">
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Bought Date</th>
+                                                <th scope="col">Bought Price</th>
+                                                <th scope="col">Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>NFT 1</td>
+                                                <td>2019/08/15</td>
+                                                <td>0.7 <span>ETH</span></td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>NFT 2</td>
+                                                <td>2020/03/21</td>
+                                                <td>0.23 <span>ETH</span></td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>NFT 3</td>
+                                                <td>2020/09/07</td>
+                                                <td>50 <span>BUSD</span></td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td>NFT 4</td>
+                                                <td>2019/10/25</td>
+                                                <td>38 <span>BUSD</span></td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">5</th>
+                                                <td>NFT 5</td>
+                                                <td>2022/01/09</td>
+                                                <td>0.52 <span>ETH</span></td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">6</th>
+                                                <td>NFT 6</td>
+                                                <td>2018/12/23</td>
+                                                <td>26 <span>BUSD</span></td>
+                                                <td>1</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <!-- transaction content -->
+                        <div class="container tab-pane fade col-12 p-0 " role="tabpanel" id="pane-transfer"
+                            aria-labelledby="tab-transfer">
+
+                            <!-- <div class="navigator" id="content-navigator">
+                                <div id="href-div">
+                                    <a href="#form-div" style="color:navy">Apply</a>
+                                    <a href="#" style="color:navy">Status</a>
+                                    <a href="#" style="color:navy">Third a</a>
+                                </div>
+                            </div> -->
+
+                            <div class="row mb-5 p-0" id="transfer-intro" style="margin-left:0px;">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-5">
+                                    <div>
+                                        <h1 class="content-title mt-4" id="transfer-title">
+                                            <span id="title-cn">轉讓申請</span>
+                                            <br>
+                                            <span id="title-en">Transaction Application</span>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-7 col-lg-7 p-0" id="user-transfer-img-div">
+                                    <img id="transfer-img" src="imgs/transfer850.jpg">
+                                </div>
+                            </div>
+
+                            <div class="row mb-5 p-0" style="width:100%;margin: 0 auto;">
+
+                                <div class="col-12 p-5" id="form-div">
+
+                                    <label class="mb-4 p-0" id="form-title" style="display:block;align-items:center;">
+                                        <span id="span-cn">轉讓申請 </span>
+                                        <span id="span-en"> Application Procedures</span>
+                                    </label>
+
+                                    <form class="steps" id="step-1" style="border: 2px solid darkgrey;">
+                                        <div>
+                                            <label class="labels mb-4">Step 1 -<br>Sender Informations</label>
+                                            <br>
+                                            <label class="tab-labels" for="sender-username">*輸入使用者名稱 Enter User
+                                                Name</label>
+                                            <p>
+                                                <input type="text" id="sender-username" placeholder="Enter Sender User Name" required>
+                                            </p>
+
+                                            <label class="tab-labels" for="sender-wid">*輸入虛擬錢包ID Enter Virtual Wallet
+                                                Id</label>
+                                            <p><input type="text" id="sender-wid" placeholder="Enter Wallet Id" required></p>
+
+                                            <label class="tab-labels" for="sender-item">*選擇轉讓物品 Choose Item for
+                                                Transfermation</label>
+
+                                            <!-- 用p包起來讓他成為一個row, 就不用在那邊display block -->
+                                            <p>
+                                                <select id="sender-item">
+                                                    <option value="#1">#1</option>
+                                                    <option value="#2">#2</option>
+                                                    <option value="#3">#3</option>
+                                                    <option value="#4">#4</option>
+                                                    <option value="#5">#5</option>
+                                                </select>
+                                            </p>
+
+                                            <label class="tab-labels" for="sender-notes">備註 Notes (optional)</label>
+                                            <p><input type="text" id="sender-notes" placeholder="notes? (optional)"></p>
+                                        </div>
+
+                                        <p>
+                                            <button type="button" class="btn btn-outline-success" id="veriBtn1">Verify</button>
+                                            <button type="button" class="btn btn-outline-info" id="s1-nextBtn" style="float:right;">Next</button>
+                                        </p>
+
+                                    </form>
+
+                                    <form class="steps" id="step-2" style="border: 2px solid darkgrey;">
+                                        <div>
+                                            <label class="labels mb-4">Step 2:<br>Recipiant Informations</label>
+                                            <br>
+
+                                            <label class="tab-labels" for="recei-wid">*輸入接收者錢包ID Enter Recipiant Wallet Id</label>
+                                            <p><input type="text" id="recei-wid" placeholder="Enter Wallet Id" required></p>
+
+                                            <label class="tab-labels" for="recei-notes">備註 Notes (optional)</label>
+                                            <p><input type="text" id="recei-notes" placeholder="notes? (optional)"></p>
+                                        </div>
+                                        <div>
+                                            <button type="button" class="btn btn-outline-success" id="veriBtn2">Verify</button>
+                                        </div>
+
+                                        <div id="btn-div">
+                                        <div style="float:right;">
+                                            <button type="button" class="btn btn-outline-info" id="s2-prevBtn">Previous</button>
+                                            <button type="button" class="btn btn-outline-info" id="s2-nextBtn">Next</button>
+                                        </div>
+                                    </div>
+                                    </form>
+
+                                    <form class="steps" id="step-3" style="border: 2px solid darkgrey;">
+                                        <div>
+                                            <label class="labels mb-4">Step 3:<br>Validations</label>
+                                            <p><input id="veriCode-input" placeholder="Enter verification code" required></p>
+                                            <p><label id="veri-label">Verification Code: </label><span id="veri-code">0000</span></p>
+                                        </div>
+                                        <div>
+                                            <button type="button" class="btn btn-outline-success" id="veriBtn3">Verify</button>
+                                        </div>
+
+                                        <div id="btn-div">
+                                        <div style="float:right;">
+                                            <button type="button" class="btn btn-outline-info" id="s3-prevBtn">Previous</button>
+                                            <button type="button" class="btn btn-outline-info" id="s3-nextBtn">Next</button>
+                                        </div>
+                                    </div>
+                                    </form>
+
+                                    <form class="steps" id="step-4" style="border: 2px solid darkgrey;" action="">
+                                        <div>
+                                            <p><label class="labels mb-0">Step 4:<br>Confirmation</label></p>
+
+                                            <div class="row mt-0">
+
+                                                <div class="col-6 p-0">
+                                                    <div style="border-bottom: 3px solid red;">
+                                                        <label style="font-size:18px;" for="">Sender Informations:</label>
+                                                    </div>
+                                                    <div class="mt-2 ml-3" style="font-size: 16px;color:black;">
+                                                        <p>Username: 
+                                                            <span id="s4-sender-username">AAA</span>
+                                                        </p>
+                                                        <p>Wallet Id: <br>
+                                                            <span id="s4-sender-wid">BBB</span>
+                                                        </p>
+                                                        <p>Selected Item: 
+                                                            <span id="s4-sender-itemNum">CCC</span>
+                                                         </p>
+                                                        <p>Notes: 
+                                                            <span id="s4-sender-notes">DDD</span>
+                                                         </p>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6 p-0">
+                                                    <div style="border-bottom: 3px solid black;">
+                                                        <label style="font-size:18px;" for="">Recipiant Informations:</label>
+                                                    </div>
+                                                    <div class="mt-2 ml-3" style="font-size: 16px;color:black;">
+                                                        <p>Wallet Id: <br>
+                                                            <span id="s4-recei-wid">BBB</span>
+                                                        </p>
+                                                        <p>Notes: 
+                                                            <span id="s4-recei-notes">DDD</span>
+                                                         </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+
+                                        </div>
+
+                                        <div id="btn-div">
+                                        <div style="float:right;">
+                                            <button type="button" class="btn btn-outline-info" id="s4-prevBtn">Previous</button>
+                                            <button type="submit" class="btn btn-outline-info" id="s4-appBtn">Apply</button>
+                                        </div>
+                                    </div>
+                                    </form>
+
+
+                                    
+
+                                    <!-- Circles which indicates the steps of the form: -->
+                                    <div style="text-align:center;margin-top:40px;">
+                                        <span class="step"></span>
+                                        <span class="step"></span>
+                                        <span class="step"></span>
+                                        <span class="step"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- status row -->
+                            <div class="row p-0" style="width:100%;margin: 0 auto;">
+
+                                <div class="col-12">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- help content -->
+                        <div class="container tab-pane fade col-12 p-0" role="tabpanel" id="pane-help"
+                            aria-labelledby="tab-help">
+
+                            <div class="row p-0 mt-5 mb-5" id="help-intro">
+                                <div class="col-4 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                                    <div>
+                                        <h1 class="content-title" id="help-title">
+                                            <span style="font-size:2.2em;font-weight:600;">協助中心</span><br>
+                                            <span style="font-size:1.0649em;font-weight:600;">Help Center</span>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-8 col-lg-7 col-xl-7 mt-5 mb-5 p-0" id="help-img-div">
+                                    <img id="help-img" src="./imgs/help850.jpg">
+                                </div>
+                            </div>
+
+                            <div class="row p-5 mt-5 align-self-center" id="help-center">
+
+                                <div class="col-10 col-md-8 col-lg-7 col-xl-7">
+                                    <img src="imgs/help5-4.jpg" alt="help.jpg" style="width:100%;height:100%;">
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 mt-5">
+                                    <h3
+                                        style="color: #385a64; font-weight: bolder;margin-top:5%;margin-bottom:4%;font-weight:bolder;">
+                                        我們能幫您什麼？</h3>
+                                    <p class="chinese" id="help-text"
+                                        style="font-size:18px;font-weight:700;line-height:1.6em;">
+                                        我們團隊成立的宗旨，是幫助顧客們依照最理想及最舒適的方式，找到最喜歡、最有興趣的活動。
+                                        讓顧客能透過本平台，在虛擬世界中體驗更美好的生活，也是我們努力的目標之一。
+                                        我們對於使用者體驗是相當的重視，您的任何要求，都會成為我們的參考。
+                                        請在此留言，讓我們的團隊知道，您對本團隊有什麼期望，或是對我們的建議。
+                                        <br><br>
+                                        請不吝發表想法，本團隊感謝您寶貴的意見。
+                                        <br><br>
+                                        <span style="font-family: 'Barlow', sans-serif;font-size:21px;float:right;">
+                                            ---- Minterlake 團隊感謝您
+                                        </span>
+                                    </p>
+                                    <br>
+                                </div>
+
+                            </div>
+
+                            <div class="row p-2" id="textarea-row">
+
+                                <div class="col-12 col-lg-10 p-1 mt-5 mb-5 ml-auto" id="help-div">
+
+                                    <div class="card border-info mb-3" id="help-card">
+                                        <div class="card-header" style="font-size: 1.5em;font-weight:900;">
+                                            讓我們聽見你！We want to hear you !
+                                        </div>
+                                        <div class="card-body text-info">
+                                            <div id="textarea-div">
+                                                <textarea id="textarea" rows="8" cols="60" placeholder=" Anything !"
+                                                    style="resize:none;"></textarea>
+                                                <button type="submit" class="btn btn-secondary p-1 ml-5"
+                                                    style="height:45px;">Submit</button>
+                                            </div>
+                                            <p class="card-text">After clicking on the submit button, messages will
+                                                sent directly to <span>minterlake@gmail.com</span>
+                                                right away as a reference to imporve our team.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <!-- end tab content -->
+
+                </div>
+
+            </div>
+            <!-- end contnet -->
+
+
+        </div>
+        <!-- end sidebar + content -->
+
+        <!-- --------------------------------------------------------------------------------------------------------------------- -->
+
+        <!-- footer -->
+        <div class="card text-center footer">
+            <div class="card-header" style="border: none;"></div>
+            <div class="card-body">
+                <h5 class="card-title">Contact Us with</h5>
+                <div class="social-btns">
+                    <a href="https://facebook.com/">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://instagram.com/">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://gmail.com/">
+                        <i class="fa-duotone fa-envelope-open-text"></i>
+                    </a>
+                </div>
+                <a href="#" class="btn btn-primary">Go Top</a>
+            </div>
+        </div>
+        <!-- end footer -->
+
+        <!-- to top button -->
+        <button onclick="topFunction()" class="btn btn-circle" id="myBtn" title="Go to top">
+            <i class="fa-solid fa-angles-up"></i>
+        </button>
+
+    </div>
+    <!-- end container -->
+
+    <!-- --------------------------------------------------------------------------------------------------------------------- -->
+
+    <!-- font awesome link  -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <!-- chart.js 3.7.1 CDN (Content Delivery Network) -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/personal.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js"
+        type="text/javascript"></script>
+
+</body>
+
+</html>
